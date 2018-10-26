@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    View,
     ScrollView,
     StyleSheet,
 } from 'react-native';
@@ -12,7 +13,7 @@ import {
 
 export default class WorkScreen extends React.Component {
     static navigationOptions = {
-        header: null,
+        title: 'Ruta A',
     };
 
     select = () => {
@@ -22,16 +23,17 @@ export default class WorkScreen extends React.Component {
 
     render() {
         return (
-            <ScrollView style={styles.container}>
-                <Card title='Ruta'>
+            <ScrollView style={styles.container} contentContainerStyle={styles.scrollContainer}>
+                <View style={styles.viewContainer}>
                     <Button
                         icon={{name: 'crop-free'}}
                         backgroundColor='#03A9F4'
                         buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                        containerViewStyle={styles.buttonView}
                         onPress={this.select}
                         title='Scan QR code' />
-                </Card>
-                <Button title="Atrás" onPress={this._goBack} />
+                </View>
+                <Button containerViewStyle={styles.buttonView} title="Atrás" onPress={this._goBack} />
             </ScrollView>
         );
     }
@@ -41,8 +43,23 @@ export default class WorkScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    scrollContainer: {
         flex: 1,
+        justifyContent: 'center',
+        alignItems: 'stretch',
+    },
+    viewContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'stretch',
+        width: '100%',
+        flexDirection: 'column',
+    },
+    container: {
         backgroundColor: '#fff',
+    },
+    buttonView: {
+        paddingTop: 10,
+        paddingBottom: 10,
     },
 });

@@ -13,10 +13,6 @@ import { Text, Button } from 'react-native-elements';
 
 import t from 'tcomb-form-native';
 
-import { WebBrowser } from 'expo';
-
-import { MonoText } from '../components/StyledText';
-
 const Form = t.form.Form;
 const User = t.struct({
     "Usuario": t.String,
@@ -55,22 +51,26 @@ export default class LogInScreen extends React.Component {
 
     render() {
         return (
-            <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-                <View style={styles.logoContainer}>
-                    <Image
-                        source={ require('../assets/images/logo.png') }
-                        style={styles.logoImage}
-                    />
-                </View>
-                <View style={styles.headerContainer}>
-                    <Text style={styles.headerText}>Log In</Text>
-                </View>
-                <View style={styles.container}>
-                    <Form ref={c => this._form = c} type={User} options={options} />
-                    <Button
-                        title="Entrar"
-                        onPress={this.handleSubmit}
-                    />
+            <ScrollView style={styles.scroll} contentContainerStyle={styles.mainContainer}>
+                <View style={styles.mainContainer}>
+                    <View style={styles.logoContainer}>
+                        <Image
+                            source={ require('../assets/images/logo.png') }
+                            style={styles.logoImage}
+                        />
+                    </View>
+                    <View style={styles.headerContainer}>
+                        <Text style={styles.headerText}>Log In</Text>
+                    </View>
+                    <View style={styles.contentContainer}>
+                        <Form ref={c => this._form = c} type={User} options={options} />
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <Button
+                            title="Entrar"
+                            onPress={this.handleSubmit}
+                        />
+                    </View>
                 </View>
             </ScrollView>
             );
@@ -78,15 +78,33 @@ export default class LogInScreen extends React.Component {
             }
 
 const styles = StyleSheet.create({
+  scroll: {
+    backgroundColor: '#fbfbfb',
+  },
   container: {
     flex: 1,
-    marginTop: 5,
-    padding: 20,
-    backgroundColor: '#ffffff',
+  },
+  mainContainer: {
+    flex: 1,
+  },
+  logoContainer: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerContainer: {
-    marginTop: 50,
-    padding: 20,
+    paddingLeft: '33%',
+    paddingRight: '33%',
+  },
+  contentContainer: {
+    paddingTop: 40,
+    paddingLeft: '20%',
+    paddingRight: '20%',
+    flex: 1,
+  },
+  buttonContainer: {
+    marginTop: 10,
+    marginBottom: 10,
   },
   headerText: {
     fontSize: 30,
@@ -94,47 +112,11 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     textAlign: 'center',
   },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  logoContainer: {
-    alignItems: 'center',
-    marginTop: 80,
-    marginBottom: 20,
-  },
   logoImage: {
     width: 100,
     height: 80,
     resizeMode: 'contain',
     marginTop: 3,
     marginLeft: -10,
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
   },
 });

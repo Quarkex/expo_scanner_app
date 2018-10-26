@@ -36,14 +36,13 @@ export default class FormScreen extends React.Component {
     render() {
         return (
             <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-                <View style={styles.container}>
-                    <Form ref={c => this._form = c} type={Message} options={options} />
-                    <Button
-                        title="Enviar"
-                        onPress={this.handleSubmit}
-                    />
+                <View style={styles.container} contentContainerStyle={styles.contentContainer}>
+                    <Form style={styles.form} ref={c => this._form = c} type={Message} options={options} />
                 </View>
-                <Button title="Cancelar" onPress={this._goBack} />
+                <View style={styles.buttons} contentContainerStyle={styles.buttonsContainer}>
+                    <Button containerViewStyle={styles.buttonView} buttonStyle={styles.button} title="Cancelar" onPress={this._goBack}      />
+                    <Button containerViewStyle={styles.buttonView} buttonStyle={styles.button} title="Enviar"   onPress={this.handleSubmit} />
+                </View>
             </ScrollView>
         );
     };
@@ -53,11 +52,27 @@ export default class FormScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
     contentContainer: {
         paddingTop: 30,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'stretch',
+    },
+    container: {
+        flex: 1,
+        width: '100%',
+        backgroundColor: '#fff',
+    },
+    buttons: {
+        flexDirection: 'row',
+    },
+    button: {
+        flex: 1,
+    },
+    buttonView: {
+        flex: 1,
+        flexDirection: 'row',
+        marginTop: 10,
+        marginBottom: 10,
     },
 });

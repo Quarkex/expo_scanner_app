@@ -24,19 +24,18 @@ export default class FeedbackScreen extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+            <ScrollView contentContainerStyle={styles.container}>
 
-                    <View style={styles.callout}>
-                        <Text style={styles.status}>
-                            El registro se ha realizado correctamente.
-                        </Text>
-                        <Button title="Continuar" onPress={this._goBack} />
-                    </View>
+                <View style={styles.callout}>
+                    <Text style={styles.status}>
+                        El registro se ha realizado correctamente.
+                    </Text>
+                </View>
+                <View style={styles.buttonContainer}>
+                    <Button title="Continuar" onPress={this._goBack} />
+                </View>
 
-                </ScrollView>
-
-            </View>
+            </ScrollView>
             );
     }
 
@@ -46,16 +45,11 @@ export default class FeedbackScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-    },
-    contentContainer: {
-        flex: 1,
-        paddingTop: 30,
+        backgroundColor: '#fbfbfb',
     },
     callout: {
         flex: 1,
-        alignItems: 'center',
-        marginHorizontal: 50,
+        marginHorizontal: '25%',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -64,6 +58,9 @@ const styles = StyleSheet.create({
         color: 'rgba(96,100,109, 1)',
         lineHeight: 24,
         textAlign: 'center',
-        marginBottom: 20,
+    },
+    buttonContainer: {
+        marginTop: 10,
+        marginBottom: 10,
     },
 });
