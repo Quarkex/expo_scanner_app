@@ -25,10 +25,14 @@ const User = t.struct({
 
 const options = {
     fields: {
+        "Usuario": {
+            error: 'El usuario es obligatorio',
+        },
         "Contraseña": {
+            error: 'La contraseña el obligatoria',
             password: true,
             secureTextEntry: true,
-        }
+        },
     }
 };
 
