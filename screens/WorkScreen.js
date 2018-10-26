@@ -1,6 +1,14 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
-import { Card, ListItem, Button } from 'react-native-elements';
+import {
+    ScrollView,
+    StyleSheet,
+} from 'react-native';
+import {
+    Button,
+    Card,
+    ListItem,
+    Text,
+} from 'react-native-elements';
 
 export default class WorkScreen extends React.Component {
     static navigationOptions = {
