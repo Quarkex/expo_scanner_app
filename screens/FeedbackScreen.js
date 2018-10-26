@@ -4,10 +4,13 @@ import {
     Platform,
     ScrollView,
     StyleSheet,
-    Text,
     TouchableOpacity,
     View,
 } from 'react-native';
+import {
+    Button,
+    Text,
+} from 'react-native-elements';
 
 
 import { WebBrowser } from 'expo';
@@ -28,6 +31,7 @@ export default class FeedbackScreen extends React.Component {
                         <Text style={styles.status}>
                             El registro se ha realizado correctamente.
                         </Text>
+                        <Button title="Continuar" onPress={this._goBack} />
                     </View>
 
                 </ScrollView>
@@ -35,6 +39,8 @@ export default class FeedbackScreen extends React.Component {
             </View>
             );
     }
+
+    _goBack = () => { this.props.navigation.navigate('Work'); };
 }
 
 const styles = StyleSheet.create({
