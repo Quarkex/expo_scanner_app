@@ -40,8 +40,10 @@ export default class LogInScreen extends React.Component {
     };
 
     handleSubmit = () => {
+        const { navigate } = this.props.navigation;
         const value = this._form.getValue(); // use that ref to get the form value
         console.log('value: ', value);
+        navigate('Selector');
     }
     static navigationOptions = {
         header: null,

@@ -1,27 +1,47 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
+import { ScrollView, StyleSheet, Text } from 'react-native';
+import { Card, ListItem, Button } from 'react-native-elements';
+
+const routes = [
+    { name: 'Ruta A', id: '1' },
+    { name: 'Ruta B', id: '2' }
+]
 
 export default class SelectorScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Links',
-  };
+    static navigationOptions = {
+        title: 'Route Selector',
+    };
 
-  render() {
-    return (
-      <ScrollView style={styles.container}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-        <ExpoLinksView />
-      </ScrollView>
-    );
-  }
+    select = () => {
+        const { navigate } = this.props.navigation;
+        navigate('Work');
+    }
+
+    render() {
+        return (
+            <ScrollView style={styles.container}>
+                <Card containerStyle={{padding: 0}} >
+                {
+                    routes.map((r, i) => {
+                        return (
+                            <ListItem
+                            key={i}
+                            title={r.name}
+                            onPress={this.select}
+                                />
+                        );
+                    })
+                }
+                </Card>
+                </ScrollView>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
+    container: {
+        flex: 1,
+        paddingTop: 15,
+        backgroundColor: '#fff',
+    },
 });
