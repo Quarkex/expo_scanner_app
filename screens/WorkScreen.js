@@ -32,6 +32,13 @@ export default class WorkScreen extends React.Component {
                         containerViewStyle={styles.buttonView}
                         onPress={this.select}
                         title='Scan QR code' />
+                    <Button
+                        icon={{name: 'check'}}
+                        backgroundColor='#03A9F4'
+                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                        containerViewStyle={styles.buttonView}
+                        onPress={this._endRoute}
+                        title='Finalizar ruta' />
                 </View>
                 <Button containerViewStyle={styles.buttonView} title="Atrás" onPress={this._goBack} />
             </ScrollView>
@@ -39,6 +46,8 @@ export default class WorkScreen extends React.Component {
     }
 
     _goBack = () => { this.props.navigation.navigate('Selector'); };
+
+    _endRoute = () => { this.props.navigation.navigate('Selector'); };
 
 }
 
