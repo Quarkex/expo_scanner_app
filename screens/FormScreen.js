@@ -17,7 +17,8 @@ const Message = t.struct({
 });
 
 const options = {
-    fields: {}
+    auto: 'placeholders',
+    fields: {},
 };
 
 export default class FormScreen extends React.Component {
