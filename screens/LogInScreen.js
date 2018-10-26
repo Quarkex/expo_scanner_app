@@ -4,13 +4,12 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   TouchableHighlight,
   AppRegistry,
   View,
-  Button,
 } from 'react-native';
+import { Text, Button } from 'react-native-elements';
 
 import t from 'tcomb-form-native';
 
@@ -48,6 +47,7 @@ export default class LogInScreen extends React.Component {
     static navigationOptions = {
         header: null,
     };
+
     render() {
         return (
             <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -70,7 +70,7 @@ export default class LogInScreen extends React.Component {
             </ScrollView>
             );
             };
-}
+            }
 
 const styles = StyleSheet.create({
   container: {
