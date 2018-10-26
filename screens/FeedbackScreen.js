@@ -49,41 +49,21 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     contentContainer: {
+        flex: 1,
         paddingTop: 30,
     },
     callout: {
+        flex: 1,
         alignItems: 'center',
         marginHorizontal: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     status: {
         fontSize: 17,
         color: 'rgba(96,100,109, 1)',
         lineHeight: 24,
         textAlign: 'center',
-    },
-    tabBarInfoContainer: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'black',
-                shadowOffset: { height: -3 },
-                shadowOpacity: 0.1,
-                shadowRadius: 3,
-            },
-            android: {
-                elevation: 20,
-            },
-        }),
-        alignItems: 'center',
-        backgroundColor: '#fbfbfb',
-        paddingVertical: 20,
-    },
-    tabBarInfoText: {
-        fontSize: 17,
-        color: 'rgba(96,100,109, 1)',
-        textAlign: 'center',
+        marginBottom: 20,
     },
 });
