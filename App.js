@@ -2,6 +2,13 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import t from 'tcomb-form-native';
+
+const formStyle = t.form.Form.stylesheet;
+formStyle.textbox.normal.borderColor      = '#00000000';
+formStyle.textbox.error.borderColor       = '#00000000';
+formStyle.textbox.notEditable.borderColor = '#00000000';
+
 
 export default class App extends React.Component {
   state = {
