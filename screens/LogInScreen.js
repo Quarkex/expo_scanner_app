@@ -24,6 +24,7 @@ const User = t.struct({
 });
 
 const options = {
+    auto: 'placeholders',
     fields: {
         "Usuario": {
             error: 'El usuario es obligatorio',
