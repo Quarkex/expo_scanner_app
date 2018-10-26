@@ -43,9 +43,13 @@ export default class FormScreen extends React.Component {
                         onPress={this.handleSubmit}
                     />
                 </View>
+                <Button title="Cancelar" onPress={this._goBack} />
             </ScrollView>
         );
     };
+
+    _goBack = () => { this.props.navigation.navigate('Work'); };
+
 }
 
 const styles = StyleSheet.create({

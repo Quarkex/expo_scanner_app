@@ -33,9 +33,12 @@ export default class SelectorScreen extends React.Component {
                     })
                 }
                 </Card>
+                <Button title="Atrás" onPress={this._goBack} />
                 </ScrollView>
         );
     }
+
+    _goBack = () => { this.props.navigation.navigate('LogIn'); };
 }
 
 const styles = StyleSheet.create({

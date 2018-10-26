@@ -31,9 +31,13 @@ export default class WorkScreen extends React.Component {
                         onPress={this.select}
                         title='Scan QR code' />
                 </Card>
+                <Button title="Atrás" onPress={this._goBack} />
             </ScrollView>
         );
     }
+
+    _goBack = () => { this.props.navigation.navigate('Selector'); };
+
 }
 
 const styles = StyleSheet.create({

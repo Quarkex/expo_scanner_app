@@ -1,5 +1,6 @@
 import React from 'react';
-import { Alert, Linking, Dimensions, LayoutAnimation, Text, View, StatusBar, StyleSheet, TouchableOpacity, } from 'react-native';
+import { Alert, Linking, Dimensions, LayoutAnimation, View, StatusBar, StyleSheet, TouchableOpacity, } from 'react-native';
+import { Text, Button } from 'react-native-elements';
 import { ExpoLinksView } from '@expo/samples';
 import { BarCodeScanner, Permissions } from 'expo';
 
@@ -24,12 +25,7 @@ export default class ScannerScreen extends React.Component {
     });
   };
 
-  _handleBarCodeRead = result => {
-    if (result.data !== this.state.lastScannedUrl) {
-      LayoutAnimation.spring();
-      this.setState({ lastScannedUrl: result.data });
-    }
-  };
+  _handleBarCodeRead = () => { this.props.navigation.navigate('Form'); };
 
   render() {
     return (
@@ -49,54 +45,23 @@ export default class ScannerScreen extends React.Component {
                   }}
                 />}
 
-        {this._maybeRenderUrl()}
+        <View style={styles.bottomBar}>
+          <TouchableOpacity
+            style={styles.cancelButton}
+            onPress={this._goBack}>
+            <Text style={styles.cancelButtonText}>
+              Cancelar
+            </Text>
+          </TouchableOpacity>
+        </View>
 
         <StatusBar hidden />
       </View>
     );
   }
 
-  _handlePressUrl = () => {
-    Alert.alert(
-      'Abrir este enlace?',
-      this.state.lastScannedUrl,
-      [
-        {
-          text: 'Sí',
-          onPress: () => Linking.openURL(this.state.lastScannedUrl),
-        },
-        { text: 'No', onPress: () => {} },
-      ],
-      { cancellable: false }
-    );
-  };
+  _goBack = () => { this.props.navigation.navigate('Work'); };
 
-  _handlePressCancel = () => {
-    this.setState({ lastScannedUrl: null });
-  };
-
-  _maybeRenderUrl = () => {
-    if (!this.state.lastScannedUrl) {
-      return;
-    }
-
-    return (
-      <View style={styles.bottomBar}>
-        <TouchableOpacity style={styles.url} onPress={this._handlePressUrl}>
-          <Text numberOfLines={1} style={styles.urlText}>
-            {this.state.lastScannedUrl}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.cancelButton}
-          onPress={this._handlePressCancel}>
-          <Text style={styles.cancelButtonText}>
-            Cancel
-          </Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
 }
 
 const styles = StyleSheet.create({
@@ -114,13 +79,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)',
     padding: 15,
     flexDirection: 'row',
-  },
-  url: {
-    flex: 1,
-  },
-  urlText: {
-    color: '#fff',
-    fontSize: 20,
   },
   cancelButton: {
     marginLeft: 10,
