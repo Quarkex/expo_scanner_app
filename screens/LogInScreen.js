@@ -45,8 +45,8 @@ export default class LogInScreen extends React.Component {
         const { navigate } = this.props.navigation;
         const value = this._form.getValue() == null ? {"Usuario": "", "Contraseña": ""} : this._form.getValue(); // use that ref to get the form value
 
-        console.log(API.server + '/read');
-        fetch(API.server + '/read', {
+        console.log(API.server + '/login');
+        fetch(API.server + '/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -59,7 +59,11 @@ export default class LogInScreen extends React.Component {
             .then(response => response.json())
             .then(response => {
                 console.log(response);
-                navigate('Selector');
+                if ( response["status"] == "success"){
+                    navigate('Selector');
+                } else {
+                    navigate('LogIn');
+                }
             })
             .catch((error) => {
                 console.error(error);
