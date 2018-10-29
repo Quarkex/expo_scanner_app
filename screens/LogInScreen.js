@@ -13,6 +13,8 @@ import { Text, Button } from 'react-native-elements';
 
 import t from 'tcomb-form-native';
 
+import API from '../constants/API';
+
 const Form = t.form.Form;
 const User = t.struct({
     "Usuario": t.String,
@@ -39,12 +41,32 @@ export default class LogInScreen extends React.Component {
         header: null,
     };
 
-    handleSubmit = () => {
+    handleSubmit = async () => {
         const { navigate } = this.props.navigation;
-        const value = this._form.getValue(); // use that ref to get the form value
-        console.log('value: ', value);
-        navigate('Selector');
+        const value = this._form.getValue() == null ? {"Usuario": "", "Contraseña": ""} : this._form.getValue(); // use that ref to get the form value
+
+        console.log(API.server + '/read');
+        fetch(API.server + '/read', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                "user": value["Usuario"],
+                "password": value["Contraseña"]
+            })
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                navigate('Selector');
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
     }
+
     static navigationOptions = {
         header: null,
     };
